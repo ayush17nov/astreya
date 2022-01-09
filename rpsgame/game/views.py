@@ -36,9 +36,9 @@ def play_game(user_choice, round, user, player_score):
     msg = "Round %r - Bot has selected %r at %r hours!"%(round, comp_choice, str(datetime.datetime.now()))
     logger.debug(msg)
     if comp_choice == user_choice:
-        return "tie"
+        return comp_choice, "tie"
     else:
-        return rules[comp_choice, user_choice]
+        return comp_choice, rules[comp_choice, user_choice]
 
 def check_game_winning(wins, ties, loose):
     if wins >= 2 or (ties == 1 and wins >= 2) or (ties == 2 and wins >= 1):
@@ -75,7 +75,7 @@ def start_game(request, user_choice=None):
             round = round+1
         else:
             round = 1
-        result = play_game(user_choice, round, user_playing, player_score)
+        bot_selection, result = play_game(user_choice, round, user_playing, player_score)
         if result == "won":
             user_wins += 1
             player_score += 1
@@ -87,4 +87,13 @@ def start_game(request, user_choice=None):
         if round == 3:
             final_result = check_game_winning(user_wins, user_ties, user_loose)
             result = None
-        return render(request, "home.html", {"result": result, "round": round, 'user': user_playing, "final_result": final_result})
+        return render(
+            request, 
+            "home.html", 
+            {
+                "result": result, 
+                "round": round, 
+                'user': user_playing, 
+                "final_result": final_result,
+                "user_choice": user_choice,
+                "bot_selection": bot_selection,})

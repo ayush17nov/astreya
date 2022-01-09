@@ -26,6 +26,8 @@
       <a href="scissors" class="btn btn-info" role="button">Scissors</a>
       
       {% if result %}
+        <p>You have selected - {{ user_choice }}</p>
+        <p>Bot has selected - {{ bot_selection }}</p>
         <div class="alert alert-info">
           You have {{ result }} the Round{{ round }}!
         </div>
