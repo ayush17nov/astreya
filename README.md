@@ -11,3 +11,5 @@
 - http://127.0.0.1:8000/
 > {"name": "chandan"}
 >> delete user [DELETE]
+
+> hosted link [http://rpseb-env.eba-bbeqthua.us-west-2.elasticbeanstalk.com/]
