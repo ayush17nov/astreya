@@ -7,8 +7,10 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">
-            <p>You have selected - {{ user_choice }}</p>
-            <p>Bot has selected - {{ bot_selection }}</p>
+            <div class="alert alert-dark">
+              <p>You have selected <strong>{{ user_choice }}</strong></p>
+              <p>Bot has selected <strong>{{ bot_selection }}</strong></p>
+            </div>
             <div class="alert alert-primary">
               You have {{ final_result }} the Game!
             </div>
@@ -28,13 +30,15 @@
       <a href="scissors" class="btn btn-info" role="button">Scissors</a>
       
       {% if result %}
-        <p>You have selected - {{ user_choice }}</p>
-        <p>Bot has selected - {{ bot_selection }}</p>
+        <div class="mt-1 alert alert-dark">
+          <p>You have selected <strong>{{ user_choice }}</strong></p>
+          <p>Bot has selected <strong>{{ bot_selection }}</strong></p>
+        </div>
         <div class="alert alert-info">
           You have {{ result }} the Round{{ round }}!
         </div>
       {% endif %}
-      <div class="mt-5">
+      <div class="mt-2">
         <a href="newgame" class="btn btn-info" role="button">Start New Game</a>
         <a href="/" class="btn btn-info" role="button">End Game</a>
       </div>
