@@ -1,0 +1,39 @@
+{% extends "base.html"%}
+
+{% block body_block %}
+  <div class="jumbotron">
+    <h1 class="display-6">{{ user }}, Welcome to the Game.</h1>
+    {% if final_result %}
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">
+            <div class="alert alert-primary">
+              You have {{ final_result }} the Game!
+            </div>
+          </h4>
+          <p class="card-text">Please start over or exit the game.</p>
+          <a href="newgame" class="btn btn-info" role="button">Start New Game</a>
+          <a href="/" class="btn btn-info" role="button">End Game</a>
+        </div>
+      </div>
+    {% else %}      
+      {% if round %}
+        <h1 class="display-4">Round {{ round }}</h1>
+      {% endif %}
+      <p class="lead">Click on a below buttons to select your Choice!</p>
+      <a href="rock" class="btn btn-info" role="button">Rock</a>
+      <a href="paper" class="btn btn-info" role="button">Paper</a>
+      <a href="scissors" class="btn btn-info" role="button">Scissors</a>
+      
+      {% if result %}
+        <div class="alert alert-info">
+          You have {{ result }} the Round{{ round }}!
+        </div>
+      {% endif %}
+      <div class="mt-5">
+        <a href="newgame" class="btn btn-info" role="button">Start New Game</a>
+        <a href="/" class="btn btn-info" role="button">End Game</a>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
